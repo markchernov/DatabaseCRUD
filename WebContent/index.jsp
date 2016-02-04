@@ -40,7 +40,6 @@
 <script src="js/init.js"></script>
 
 
-
 </head>
 
 
@@ -83,7 +82,8 @@
 								<div class="input-field col s12">
 									<input value="SELECT * FROM employees;" id="select" type="text"
 										class="validate" name="input"> <label class="active"
-										for="first_name2">Please type your SQL statement:</label>
+										for="first_name2">Please type your SELECT SQL
+										statement:</label>
 								</div>
 							</div>
 
@@ -105,16 +105,16 @@
 
 					<div class="card-action">
 
-						<form action="GetData.do" method="GET" class="myForm">
+						<form action="UpdateData.do" method="GET" class="myForm">
 
 							<div class="row">
 								<div class="input-field col s12">
 									<input
-										value="INSERT INTO employees(id, firstname, middlename, gender, email)
+										value="INSERT INTO employees(id, firstname, middlename,lastname, gender, email)
 VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 										id="select" type="text" class="validate" name="update">
 									<label class="active" for="first_name2">Please type
-										your SQL statement:</label>
+										your INSERT/UPDATE/DELETE SQL statement:</label>
 								</div>
 							</div>
 
@@ -130,29 +130,32 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 
 					</div>
 
-					<%--
+
 
 					<div class="card-action">
 
-						<form action="GetData.do" method="GET" class="myForm">
+						<form action="GetDataLastName.do" method="GET" class="myForm">
 
 							<div class="row">
-								<div class="input-field col s6">
-									<input value="SELECT * FROM employees" id="select" type="text"
-										class="validate" name="create"> <label class="active"
-										for="first_name2">Create Statement</label>
+							
+								<div class="input-field col s12">
+									<input value="Acosta" id="select" type="text"
+										class="validate" name="input"> <label class="active"
+										for="first_name2">Please type Employee Last Name:</label>
 								</div>
 							</div>
 
 
 
 							<button class="btn waves-effect waves-light deep-purple"
-								type="submit" name="create">
-								CREATE <i class="material-icons right">launch</i>
-							</button>
+								type="submit" >
+								FIND <i class="material-icons right">launch</i>
+							</button> 
 
 
 						</form>
+
+						<%--
 
 
 					</div>
@@ -180,12 +183,89 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 
 
 					</div> --%>
+
+
+						<%-- <div class="card-action">
+
+
+							<form action="UpdateData.do" method="GET" class="myForm">
+
+								<div class="row">
+									<div class="input-field col s3">
+
+										<p>Select FROM Employees:</p>
+
+
+										<p>
+											<input type="checkbox" id="test5" checked="checked" /> <label
+												for="test5">ID</label>
+										</p>
+										<p>
+											<input type="checkbox" id="test6" checked="checked" /> <label
+												for="test6">First Name</label>
+										</p>
+										<p>
+											<input type="checkbox" id="test7" checked="checked" /> <label
+												for="filled-in-box">Last Name</label>
+										</p>
+										<p>
+											<input type="checkbox" id="test8" /> <label
+												for="test7">Salary</label>
+										</p>
+										<p>
+											<input type="checkbox" id="test9" /> <label for="test8">Department</label>
+										</p>
+
+										<p>
+											<input type="checkbox" id="test10" /> <label for="test8">Job</label>
+										</p>
+
+										<p>
+											<input type="checkbox" id="test11" /> <label for="test8">Project</label>
+										</p>
+
+
+									</div>
+
+
+
+
+								</div>
+
+
+								<button class="btn waves-effect waves-light deep-purple"
+									type="submit">
+									SELECT <i class="material-icons right">launch</i>
+								</button>
+
+							</form>
+
+						</div> --%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
 				</div>
+
 			</div>
 
 		</div>
 
-	</div>
 
 
 
@@ -197,13 +277,11 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 
 
 
-
-	<div class="row">
-		<div class="col s12 m12">
-			<div class="card blue-grey darken-1">
-				<div class="card-content white-text">
-					<span class="card-title">Results</span>
-
+		<div class="row">
+			<div class="col s12 m12">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title">Results</span>
 
 
 
@@ -211,54 +289,51 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 
 
 
-					<table>
-						<thead>
-							<tr>
-								<th data-field="id">Emp ID</th>
-								<th data-field="name">First Name</th>
-								<th data-field="price">Middle Name</th>
-								<th data-field="name">Last Name</th>
-								<th data-field="price">Gender</th>
-								<th data-field="name">Email</th>
-								<th data-field="ext">Extension</th>
-								<th data-field="hiredate">Hire Date</th>
-								<th data-field="salary">Salary</th>
-								<th data-field="comm">Commission %</th>
-								<th data-field="dept">Department ID</th>
-								<th data-field="job">Job ID</th>
-								<th data-field="address">Address</th>
-								<th data-field="city">City</th>
-								<th data-field="state">State</th>
-								<th data-field="zip">Zip Code</th>
-								<th data-field="ver">Version</th>
 
-							</tr>
-						</thead>
+						<table>
+							<thead>
+								<tr>
+									<th data-field="id">Emp ID</th>
+									<th data-field="name">First Name</th>
+									<th data-field="price">Middle Name</th>
+									<th data-field="name">Last Name</th>
+									<th data-field="price">Gender</th>
+									<th data-field="name">Email</th>
+									<th data-field="ext">Extension</th>
+									<th data-field="hiredate">Hire Date</th>
+									<th data-field="salary">Salary</th>
+									<th data-field="comm">Commission %</th>
+									<th data-field="dept">Department ID</th>
+									<th data-field="job">Job ID</th>
+									<th data-field="address">Address</th>
+									<th data-field="city">City</th>
+									<th data-field="state">State</th>
+									<th data-field="zip">Zip Code</th>
+									<th data-field="ver">Version</th>
+
+								</tr>
+							</thead>
 
 
-						<tbody>
+							<tbody>
 								<c:forEach var="tempList" items="${selectResult}">
 
-                              		<tr>
-									<c:forEach var="string" items="${tempList}">                              
-										<td>"${string}" </td>
-									
-									</c:forEach>
-                                    </tr>  
+									<tr>
+										<c:forEach var="string" items="${tempList}">
+											<td>"${string}"</td>
+
+										</c:forEach>
+									</tr>
 								</c:forEach>
-						</tbody>
+							</tbody>
 
 
-					</table>
+						</table>
+					</div>
+					<div class="card-action"></div>
 				</div>
-				<div class="card-action"></div>
 			</div>
 		</div>
-	</div>
-
-
-
-
 	</main>
 
 
