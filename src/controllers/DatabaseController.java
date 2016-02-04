@@ -39,9 +39,9 @@ public class DatabaseController {
 	
 	// update table
 
-		@RequestMapping(path = "insertData.do", params = "input", method = RequestMethod.GET)
+		@RequestMapping(path = "UpdateData.do", params = "update", method = RequestMethod.GET)
 
-		public ModelAndView insertSQL(@RequestParam("input") String userInput) throws ClassNotFoundException, SQLException {
+		public ModelAndView insertSQL(@RequestParam("update") String userInput) throws ClassNotFoundException, SQLException {
 
 			ModelAndView mv = new ModelAndView();
 
@@ -51,7 +51,7 @@ public class DatabaseController {
 
 			mv.setViewName("index.jsp");
 
-			mv.addObject("selectResult", databaseDao.sqlReturnInsert(userInput)); 
+			mv.addObject("updateResult", databaseDao.sqlReturnInsert(sqlTxt)); 
 			
 			return mv;
 

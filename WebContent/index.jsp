@@ -64,7 +64,7 @@
 
 
 
-	<main class="main">
+	<!-- <main class="main"> -->
 
 	<div class="row">
 		<div class="col s12 m12">
@@ -110,8 +110,8 @@
 							<div class="row">
 								<div class="input-field col s12">
 									<input
-										value="INSERT INTO employees(id, firstname, middlename,lastname, gender, email)
-VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
+										value="INSERT INTO employees(firstname, middlename,lastname, gender, email, department_id, job_id)
+VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 										id="select" type="text" class="validate" name="update">
 									<label class="active" for="first_name2">Please type
 										your INSERT/UPDATE/DELETE SQL statement:</label>
@@ -137,25 +137,104 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 						<form action="GetDataLastName.do" method="GET" class="myForm">
 
 							<div class="row">
-							
+
 								<div class="input-field col s12">
-									<input value="Acosta" id="select" type="text"
-										class="validate" name="input"> <label class="active"
-										for="first_name2">Please type Employee Last Name:</label>
+									<input value="Acosta" id="select" type="text" class="validate"
+										name="input"> <label class="active" for="first_name2">Please
+										type Employee Last Name:</label>
 								</div>
 							</div>
 
 
 
 							<button class="btn waves-effect waves-light deep-purple"
-								type="submit" >
-								FIND <i class="material-icons right">launch</i>
-							</button> 
+								type="submit">
+								FIND ALL <i class="material-icons right">launch</i>
+							</button>
 
 
 						</form>
 
-						<%--
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">Results</span>
+
+
+					<table>
+
+						<c:forEach var="tempList" items="${selectResult}" varStatus="loop">
+
+							<c:choose>
+								<c:when test="${loop}== 0">
+
+									<thead>
+										<tr>
+											<c:forEach var="string" items="${tempList[0]}">
+												<th data-field="id">"${string}"</th>
+
+											</c:forEach>
+										</tr>
+									</thead>
+
+								</c:when>
+
+								<c:otherwise>
+
+
+									<tbody>
+
+
+										<tr>
+											<c:forEach var="string" items="${tempList}">
+												<td>"${string}"</td>
+
+											</c:forEach>
+										</tr>
+
+
+									</tbody>
+								</c:otherwise>
+
+
+							</c:choose>
+						</c:forEach>
+
+
+					</table>
+
+					<div class="card-action"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 	</main> -->
+
+
+
+
+	<%--
 
 
 					</div>
@@ -185,7 +264,7 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 					</div> --%>
 
 
-						<%-- <div class="card-action">
+	<%-- <div class="card-action">
 
 
 							<form action="UpdateData.do" method="GET" class="myForm">
@@ -241,100 +320,6 @@ VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
 							</form>
 
 						</div> --%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-		<div class="row">
-			<div class="col s12 m12">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Results</span>
-
-
-
-
-
-
-
-
-						<table>
-							<thead>
-								<tr>
-									<th data-field="id">Emp ID</th>
-									<th data-field="name">First Name</th>
-									<th data-field="price">Middle Name</th>
-									<th data-field="name">Last Name</th>
-									<th data-field="price">Gender</th>
-									<th data-field="name">Email</th>
-									<th data-field="ext">Extension</th>
-									<th data-field="hiredate">Hire Date</th>
-									<th data-field="salary">Salary</th>
-									<th data-field="comm">Commission %</th>
-									<th data-field="dept">Department ID</th>
-									<th data-field="job">Job ID</th>
-									<th data-field="address">Address</th>
-									<th data-field="city">City</th>
-									<th data-field="state">State</th>
-									<th data-field="zip">Zip Code</th>
-									<th data-field="ver">Version</th>
-
-								</tr>
-							</thead>
-
-
-							<tbody>
-								<c:forEach var="tempList" items="${selectResult}">
-
-									<tr>
-										<c:forEach var="string" items="${tempList}">
-											<td>"${string}"</td>
-
-										</c:forEach>
-									</tr>
-								</c:forEach>
-							</tbody>
-
-
-						</table>
-					</div>
-					<div class="card-action"></div>
-				</div>
-			</div>
-		</div>
-	</main>
 
 
 
