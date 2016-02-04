@@ -14,6 +14,11 @@ import java.util.Set;
 public class DatabaseDAO {
 
 	
+	public void init() {
+		// Retrieve an input stream from the application context
+		// rather than directly from the file system
+	
+	
 	/*{    try {
 		DatabaseDAO.populateChoice();
 	} catch (SQLException e) {
@@ -21,20 +26,24 @@ public class DatabaseDAO {
 		e.printStackTrace();
 	}     */                   
 	
+	}
 	
-	
-	public static Connection createConnection() throws SQLException {
+	public Connection createConnection() throws SQLException, ClassNotFoundException {
 
+		Class.forName("com.mysql.jdbc.Driver");
+		
 		String url = "jdbc:mysql://localhost:3306/companydb";
 		String username = "student";
 		String password = "student";
+		
+		
 
 		Connection conn = DriverManager.getConnection(url, username, password);
 
 		return conn;}
 
 	
-	public static Set<String> populateChoice() throws SQLException {
+	public Set<String> populateChoice() throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -60,7 +69,7 @@ public class DatabaseDAO {
 
 	// create list
 
-	public List<ArrayList<String>> sqlReturnSelect(String input) throws SQLException {
+	public List<ArrayList<String>> sqlReturnSelect(String input) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -109,7 +118,7 @@ public class DatabaseDAO {
 
 	// create list
 
-	public List<ArrayList<String>> sqlReturnInsert(String input) throws SQLException {
+	public List<ArrayList<String>> sqlReturnInsert(String input) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -160,7 +169,7 @@ public class DatabaseDAO {
 
 	// find by the last name
 
-	public List<ArrayList<String>> sqlReturnLastName(String input) throws SQLException {
+	public List<ArrayList<String>> sqlReturnLastName(String input) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
