@@ -80,17 +80,17 @@
 						<form action="GetData.do" method="GET" class="myForm">
 
 							<div class="row">
-								<div class="input-field col s6">
+								<div class="input-field col s12">
 									<input value="SELECT * FROM employees;" id="select" type="text"
-										class="validate" name="select"> <label class="active"
-										for="first_name2">Select Statement</label>
+										class="validate" name="input"> <label class="active"
+										for="first_name2">Please type your SQL statement:</label>
 								</div>
 							</div>
 
 
 
 							<button class="btn waves-effect waves-light deep-purple"
-								type="submit" >
+								type="submit">
 								SELECT <i class="material-icons right">launch</i>
 							</button>
 
@@ -108,17 +108,20 @@
 						<form action="GetData.do" method="GET" class="myForm">
 
 							<div class="row">
-								<div class="input-field col s6">
-									<input value="SELECT * FROM employees" id="select" type="text"
-										class="validate" name="update"> <label class="active"
-										for="first_name2">Update Statement</label>
+								<div class="input-field col s12">
+									<input
+										value="INSERT INTO employees(id, firstname, middlename, gender, email)
+VALUES (500, 'John', 'B' , 'Good','M', bgood@gmail.com);"
+										id="select" type="text" class="validate" name="update">
+									<label class="active" for="first_name2">Please type
+										your SQL statement:</label>
 								</div>
 							</div>
 
 
 
 							<button class="btn waves-effect waves-light deep-purple"
-								type="submit" >
+								type="submit">
 								UPDATE <i class="material-icons right">launch</i>
 							</button>
 
@@ -127,7 +130,7 @@
 
 					</div>
 
-
+					<%--
 
 					<div class="card-action">
 
@@ -176,7 +179,7 @@
 						</form>
 
 
-					</div>
+					</div> --%>
 				</div>
 			</div>
 
@@ -205,6 +208,9 @@
 
 
 
+
+
+
 					<table>
 						<thead>
 							<tr>
@@ -223,30 +229,26 @@
 								<th data-field="address">Address</th>
 								<th data-field="city">City</th>
 								<th data-field="state">State</th>
-								<th data-field="name">First Name</th>
 								<th data-field="zip">Zip Code</th>
 								<th data-field="ver">Version</th>
-							
+
 							</tr>
 						</thead>
 
+
 						<tbody>
-							<tr>
-								<td>Alvin</td>
-								<td>Eclair</td>
-								<td>$0.87</td>
-							</tr>
-							<tr>
-								<td>Alan</td>
-								<td>Jellybean</td>
-								<td>$3.76</td>
-							</tr>
-							<tr>
-								<td>Jonathan</td>
-								<td>Lollipop</td>
-								<td>$7.00</td>
-							</tr>
+								<c:forEach var="tempList" items="${selectResult}">
+
+                              		<tr>
+									<c:forEach var="string" items="${tempList}">                              
+										<td>"${string}" </td>
+									
+									</c:forEach>
+                                    </tr>  
+								</c:forEach>
 						</tbody>
+
+
 					</table>
 				</div>
 				<div class="card-action"></div>

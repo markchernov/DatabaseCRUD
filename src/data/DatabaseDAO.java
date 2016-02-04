@@ -6,7 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+
 public class DatabaseDAO {
+	
+	
+	@Autowired
+	private ApplicationContext ac;
+	
+	
 
 	private static String url = "jdbc:mysql://localhost:3306/companydb";
 	private static String username = "student";
@@ -38,6 +48,34 @@ public class DatabaseDAO {
 
 	}
 
+	/*public void sqlExecute(String statement) {
+		Employee e = null;
+
+		for (Employee emp : employeeList) {
+			if (emp.getNumber() == number) {
+				e = emp;
+				break;
+			}
+		}
+		return e;
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }	
 	
