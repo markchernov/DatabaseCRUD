@@ -13,13 +13,7 @@ import java.util.Set;
 
 public class DatabaseDAO {
 
-	/*
-	 * public void init() { try { DatabaseDAO.populateChoice(); } catch
-	 * (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+	
 
 	public Connection createConnection() throws SQLException, ClassNotFoundException {
 
@@ -34,35 +28,11 @@ public class DatabaseDAO {
 		return conn;
 	}
 
-	/*
-	 * public static Set<String> populateChoice() throws SQLException,
-	 * ClassNotFoundException {
-	 * 
-	 * Connection conn = createConnection();
-	 * 
-	 * Statement stmt = conn.createStatement();
-	 * 
-	 * ResultSet rs = stmt.executeQuery(
-	 * "SELECT employees.lastname FROM employees;");
-	 * 
-	 * Set<String> tempSet = new HashSet<String>();
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * tempSet.add(rs.getString(1)); }
-	 * 
-	 * rs.close();
-	 * 
-	 * stmt.close();
-	 * 
-	 * conn.close();
-	 * 
-	 * return tempSet; }
-	 */
+	
 
 	// create and return list from select statement
 
-	public List<ArrayList<String>> sqlReturnSelect(String input) throws SQLException, ClassNotFoundException {
+	public List<ArrayList<Object>> sqlReturnSelect(String input) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -75,13 +45,13 @@ public class DatabaseDAO {
 		// get number of columns
 		int cols = rsmd.getColumnCount();
 
-		List<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
+		List<ArrayList<Object>> myList = new ArrayList<ArrayList<Object>>();
 
-		ArrayList<String> columnList = new ArrayList<String>();
+		ArrayList<Object> columnList = new ArrayList<Object>();
 
 		for (int i = 1; i <= cols; i++) {
 
-			columnList.add(rsmd.getColumnName(i));
+			columnList.add(rsmd.getColumnName(i).toUpperCase());
 
 		}
 
@@ -93,11 +63,11 @@ public class DatabaseDAO {
 
 		while (rs.next()) {
 
-			ArrayList<String> tempList = new ArrayList<String>();
+			ArrayList<Object> tempList = new ArrayList<Object>();
 
 			for (int i = 1; i <= cols; i++) {
 
-				tempList.add(rs.getString(i)); // add columns as strings to
+				tempList.add(rs.getObject(i)); // add columns as strings to
 												// array
 
 			}
@@ -138,7 +108,7 @@ public class DatabaseDAO {
 
 	// find and display by the last name
 
-	public List<ArrayList<String>> sqlReturnLastName(String input) throws SQLException, ClassNotFoundException {
+	public List<ArrayList<Object>> sqlReturnLastName(String input) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -149,7 +119,7 @@ public class DatabaseDAO {
 		String sqlTxt = "SELECT * FROM employees WHERE employees.lastname =" + input;
 		System.out.println(sqlTxt);
 
-		List<ArrayList<String>> myList = sqlReturnSelect(sqlTxt);
+		List<ArrayList<Object>> myList = sqlReturnSelect(sqlTxt);
 
 		stmt.close();
 
@@ -159,4 +129,41 @@ public class DatabaseDAO {
 
 	}
 
+	// receive parameters, call a constructor and save an object to database
+	
+	
+	
+	public String sqlInsertObject(String input) throws SQLException, ClassNotFoundException {
+
+		Connection conn = createConnection();
+
+		Statement stmt = conn.createStatement();
+		
+		
+		
+		
+
+		stmt.executeUpdate(input);
+
+		stmt.close();
+
+		conn.close();
+
+		return "Add Complete";
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

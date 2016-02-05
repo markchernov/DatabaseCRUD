@@ -25,6 +25,11 @@
 <title>Database CRUD</title>
 
 <!-- CSS  -->
+
+
+
+
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link href="css/materialize.css" type="text/css" rel="stylesheet"
@@ -64,7 +69,7 @@
 
 
 
-	<!-- <main class="main"> -->
+	<main class="main">
 
 	<div class="row">
 		<div class="col s12 m12">
@@ -163,11 +168,163 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 	</div>
 
-	
 
 
 
 
+
+
+
+	<div class="row">
+		<form class="col s12" action="CreateObject.do" method="POST">
+
+
+			<div class="card grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title"> Create Employee</span>
+					<div class="card-content white-text">
+
+
+
+
+						<div class="row">
+							<div class="input-field col s3">
+								<input placeholder="John" id="first_name" type="text"
+									class="validate" name="firstname"> <label
+									for="first_name">First Name</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="Jay" id="m_name" type="text"
+									class="validate" name="middlename"> <label
+									for="last_name">Middle Name</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="Smith" id="l_name" type="text"
+									class="validate" name="lastname"> <label for="disabled">Last
+									Name</label>
+							</div>
+
+
+							<div class="input-field col s3">
+								<input placeholder="M" id="password" type="text"
+									class="validate" name="gender"> <label for="password">Gender</label>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="input-field col s3">
+								<input placeholder="email@email.cm" id="first_name" type="text"
+									class="validate" name="email"> <label for="first_name">Email
+								</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="1111" id="last_name" type="text"
+									class="validate" name="extension"> <label
+									for="last_name">Extension</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="2016-01-01" id="first_name" type="text"
+									class="validate" name="hiredate"> <label for="disabled">Hire
+									Date</label>
+							</div>
+
+
+							<div class="input-field col s3">
+								<input placeholder="50000" id="password" type="text"
+									class="validate" name="salary"> <label for="password">Salary</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s3">
+								<input placeholder="10" id="first_name" type="text"
+									class="validate" name="commission_pct"> <label
+									for="first_name">Commission % </label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="4" id="last_name" type="text"
+									class="validate" name="department_id"> <label
+									for="last_name">Department ID</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="Placeholder" id="first_name" type="text"
+									class="5" name="job_id"> <label for="disabled">Job
+									ID Date</label>
+							</div>
+
+
+							<div class="input-field col s3">
+								<input placeholder="10 Broadway" id="password" type="text"
+									class="validate" name="address"> <label for="password">Address</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s3">
+								<input placeholder="New York" id="first_name" type="text"
+									class="validate" name="cityy"> <label for="first_name">City
+								</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="NY" id="last_name" type="text"
+									class="validate" name="state"> <label for="last_name">State
+								</label>
+							</div>
+
+							<div class="input-field col s3">
+								<input placeholder="10001" id="first_name" type="text"
+									class="validate" name="zipcode"> <label for="disabled">Zip
+									Code </label>
+							</div>
+
+
+							<div class="input-field col s3">
+								<input placeholder="1" id="password" type="text"
+									class="validate" name="version"> <label for="password">Version</label>
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+
+
+
+					<button class="btn waves-effect waves-light deep-purple"
+						type="submit">
+						CREATE <i class="material-icons right">launch</i>
+					</button>
+
+
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--  ---------------------Display--------------------------- -->
 
 
 
@@ -187,12 +344,12 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 						<c:forEach var="tempList" items="${selectResult}" varStatus="loop">
 
 							<c:choose>
-								<c:when test="${loop}== 0">
+								<c:when test="${loop.index == 0}">
 
 									<thead>
 										<tr>
-											<c:forEach var="string" items="${tempList[0]}">
-												<th data-field="id">"${string}"</th>
+											<c:forEach var="string" items="${tempList}">
+												<th data-field="id">${string}</th>
 
 											</c:forEach>
 										</tr>
@@ -208,7 +365,7 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 										<tr>
 											<c:forEach var="string" items="${tempList}">
-												<td>"${string}"</td>
+												<td>${string}</td>
 
 											</c:forEach>
 										</tr>
@@ -229,7 +386,49 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 			</div>
 		</div>
 	</div>
-<!-- 	</main> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
