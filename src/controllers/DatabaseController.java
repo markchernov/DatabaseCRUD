@@ -142,7 +142,7 @@ public class DatabaseController {
 		 int pct = Integer.parseInt(commission_pct);
 		 int dep = Integer.parseInt(department_id);
 		 int job = Integer.parseInt(job_id);
-		 int zip = Integer.parseInt(zipcode);
+		
 		 int ver = Integer.parseInt(version);
 		 
 		 
@@ -150,7 +150,7 @@ public class DatabaseController {
 		/*Employee emp = new Employee();*/
 
 		Employee emp = new Employee(firstname, middlename, lastname, gender, email, ext, date, sal,
-				pct, dep, job, address, city, state, zip, ver);
+				pct, dep, job, address, city, state, zipcode, ver);
 
 		
 		
@@ -162,7 +162,7 @@ public class DatabaseController {
 
 		mv.setViewName("index.jsp");
 
-		mv.addObject("selectResult", emp);
+		mv.addObject("updateResult", databaseDao.sqlInsertObject(emp));
 
 		return mv;
 

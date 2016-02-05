@@ -20,7 +20,7 @@ public class Employee {
 	String address;	
 	String city;		
 	String state;		
-	int zipcode;		
+	String zipcode;		
 	int version;
 	
 	
@@ -37,7 +37,7 @@ public class Employee {
 	
 	    public Employee(String firstname, String middlename, String lastname, String gender, String email,
 			int extension, Date hiredate, int salary, int commission_pct, int department_id, int job_id, String address,
-			String city, String state, int zipcode, int version) {
+			String city, String state, String zipcode, int version) {
 		super();
 		
 		this.firstname = firstname;
@@ -105,7 +105,7 @@ public class Employee {
 	public String getState() {
 		return state;
 	}
-	public int getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 	public int getVersion() {
@@ -154,7 +154,7 @@ public class Employee {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	public void setVersion(int version) {

@@ -189,13 +189,13 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 						<div class="row">
 							<div class="input-field col s3">
-								<input value="John" id="firstname" type="text"
+								<input value="Bob" id="firstname" type="text"
 									class="validate" name="firstname"> <label
 									for="first_name">First Name</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input value="Jay" id="middlename" type="text"
+								<input value="S" id="middlename" type="text"
 									class="validate" name="middlename"> <label
 									for="middlename">Middle Name</label>
 							</div>

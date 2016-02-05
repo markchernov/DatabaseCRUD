@@ -2,15 +2,15 @@ package data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class DatabaseDAO {
 
@@ -132,15 +132,16 @@ public class DatabaseDAO {
 
 		Connection conn = createConnection();
 
-		Statement stmt = conn.createStatement();
-		
-		
-		
+		String sqlTxt = "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"
+				+ " " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+		PreparedStatement stmt = conn.prepareStatement(sqlTxt);
+
 		String firstname = emp.getFirstname();
 		String middlename = emp.getMiddlename();
-		String lastname = emp.getFirstname();
-		String gender = emp.getFirstname();
-		String email = emp.getFirstname();
+		String lastname = emp.getLastname();
+		String gender = emp.getGender();
+		String email = emp.getEmail();
 		int extension = emp.getExtension();
 		Date hiredate = emp.getHiredate();
 		int salary = emp.getSalary();
@@ -150,16 +151,42 @@ public class DatabaseDAO {
 		String address = emp.getAddress();
 		String city = emp.getCity();
 		String state = emp.getState();
-		int zipcode = emp.getZipcode();
+		String zipcode = emp.getZipcode();
 		int version = emp.getVersion();
-		
-		String sqlTxt = "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"+ " "
-		
-		+ "VALUES (" + "'"+ firstname + "','" + middlename +  "','" +  lastname + "','" + gender + "','" +  email +  "'," +  extension +  "," +  hiredate + "," + salary + "," +  commission_pct + "," +
-		department_id + "," + job_id + ",'" + address + "','" + city   + "','" + state + "'," + zipcode +"," + version + ");";
-		
 
-		stmt.executeUpdate(sqlTxt);
+		stmt.setString(1, firstname);
+		stmt.setString(2, middlename);
+		stmt.setString(3, lastname);
+		stmt.setString(4, gender);
+		stmt.setString(5, email);
+		
+		
+		stmt.setInt(6, extension);
+		stmt.setDate(7, new java.sql.Date(hiredate.getTime()));
+		stmt.setInt(8, salary);
+		stmt.setInt(9, commission_pct);
+		stmt.setInt(10, department_id);
+		stmt.setInt(11, job_id);
+		
+		stmt.setString(12, address);
+		stmt.setString(13, city);
+		stmt.setString(14, state);
+		stmt.setString(15, zipcode);
+		
+		stmt.setInt(16, version);
+		
+		/*String sqlTxt = "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"
+				+ " "*/
+
+		/*
+		 * + "VALUES (" + "'"+ firstname + "','" + middlename + "','" + lastname
+		 * + "','" + gender + "','" + email + "'," + extension + "," + hiredate
+		 * + "," + salary + "," + commission_pct + "," + department_id + "," +
+		 * job_id + ",'" + address + "','" + city + "','" + state + "'," +
+		 * zipcode +"," + version + ");";
+		 */
+
+		stmt.executeUpdate();
 
 		stmt.close();
 
