@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,33 +66,97 @@ public class DatabaseController {
 		return mv;
 
 	}
+	
+	
+	
+	// select all by last name
+
+		@RequestMapping(path = "GetDataLastName.do", params = "input", method = RequestMethod.GET)
+
+		public ModelAndView selectLastNameSQL(@RequestParam("input") String userInput) throws ClassNotFoundException, SQLException {
+
+			ModelAndView mv = new ModelAndView();
+
+			String input = userInput.trim();
+			
+			
+			
+
+			System.out.println(input);
+
+			mv.setViewName("index.jsp");
+
+			mv.addObject("selectResult", databaseDao.sqlReturnLastName(input));
+
+			return mv;
+
+		}
+	
+	
+	
+	
+	
+	
+	
 
 	// create object controller
 
-	@RequestMapping(path = "CreateObject.do", method = RequestMethod.POST)
+	@RequestMapping(path = "CreateObject.do", method = RequestMethod.GET)
 
 	public ModelAndView selectLastNameSQL(@RequestParam("firstname") String firstname,
 			@RequestParam("middlename") String middlename, @RequestParam("lastname") String lastname,
 			@RequestParam("gender") String gender, @RequestParam("email") String email,
-			@RequestParam("extension") int extension, @RequestParam("hiredate") String hiredate,
-			@RequestParam("salary") int salary, @RequestParam("commission_pct") int commission_pct,
-			@RequestParam("department_id") int department_id, @RequestParam("job_id") int job_id,
+			@RequestParam("extension") String extension, @RequestParam("hiredate") String hiredate,
+			@RequestParam("salary") String salary, @RequestParam("commission_pct") String commission_pct,
+			@RequestParam("department_id") String department_id, @RequestParam("job_id") String job_id,
 			@RequestParam("address") String address, @RequestParam("city") String city,
-			@RequestParam("state") String state, @RequestParam("zipcode") int zipcode,
-			@RequestParam("version") int version) throws ClassNotFoundException, SQLException, ParseException {
+			@RequestParam("state") String state, @RequestParam("zipcode") String zipcode,
+			@RequestParam("version") String version) throws ClassNotFoundException, SQLException, ParseException {
 
+			
 		ModelAndView mv = new ModelAndView();
 
-		String tempdate = hiredate;
+		System.out.println(firstname);
+		System.out.println(middlename);
+		System.out.println(lastname);
+		System.out.println(gender);
+		System.out.println(email);
+		System.out.println(extension);
+		System.out.println(hiredate);
+		System.out.println(salary);
+		System.out.println(commission_pct);
+		System.out.println(department_id);
+		System.out.println(job_id);
+		System.out.println(address);
+		System.out.println(city);
+		System.out.println(state);
+		System.out.println(zipcode);
+		System.out.println(version);
+		
+		 DateFormat format = new SimpleDateFormat("YYYY-mm-dd", Locale.ENGLISH);
 
-		DateFormat format = new SimpleDateFormat("YYYY-mm-dd", Locale.ENGLISH);
+		 Date date = format.parse(hiredate);
+		
+		 int ext =  Integer.parseInt(extension);
+		 int sal = Integer.parseInt(salary);
+		 int pct = Integer.parseInt(commission_pct);
+		 int dep = Integer.parseInt(department_id);
+		 int job = Integer.parseInt(job_id);
+		 int zip = Integer.parseInt(zipcode);
+		 int ver = Integer.parseInt(version);
+		 
+		 
+		
+		/*Employee emp = new Employee();*/
 
-		Date date = format.parse(tempdate);
-
-		Employee emp = new Employee(firstname, middlename, lastname, gender, email, extension, date, salary,
-				commission_pct, department_id, job_id, address, city, state, zipcode, version);
+		Employee emp = new Employee(firstname, middlename, lastname, gender, email, ext, date, sal,
+				pct, dep, job, address, city, state, zip, ver);
 
 		
+		
+		List <Employee> tempList = new ArrayList<Employee>();
+		
+		tempList.add(emp);
 
 		System.out.println(emp);
 

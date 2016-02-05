@@ -176,7 +176,7 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 
 	<div class="row">
-		<form class="col s12" action="CreateObject.do" method="POST">
+		<form class="col s12" action="CreateObject.do" method="Get">
 
 
 			<div class="card grey darken-1">
@@ -189,106 +189,104 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 						<div class="row">
 							<div class="input-field col s3">
-								<input placeholder="John" id="first_name" type="text"
+								<input value="John" id="firstname" type="text"
 									class="validate" name="firstname"> <label
 									for="first_name">First Name</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="Jay" id="m_name" type="text"
+								<input value="Jay" id="middlename" type="text"
 									class="validate" name="middlename"> <label
-									for="last_name">Middle Name</label>
+									for="middlename">Middle Name</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="Smith" id="l_name" type="text"
-									class="validate" name="lastname"> <label for="disabled">Last
+								<input value="Smith" id="lastname" type="text"
+									class="validate" name="lastname"> <label for="lastname">Last
 									Name</label>
 							</div>
 
 
 							<div class="input-field col s3">
-								<input placeholder="M" id="password" type="text"
-									class="validate" name="gender"> <label for="password">Gender</label>
+								<input value="M" id="gender" type="text" class="validate"
+									name="gender"> <label for="gender">Gender</label>
 							</div>
 						</div>
 
 
 						<div class="row">
 							<div class="input-field col s3">
-								<input placeholder="email@email.cm" id="first_name" type="text"
-									class="validate" name="email"> <label for="first_name">Email
+								<input value="email@email.com" id="email" type="text"
+									class="validate" name="email"> <label for="email">Email
 								</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="1111" id="last_name" type="text"
+								<input value="1111" id="extension" type="text"
 									class="validate" name="extension"> <label
-									for="last_name">Extension</label>
+									for="extension">Extension</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="2016-01-01" id="first_name" type="text"
-									class="validate" name="hiredate"> <label for="disabled">Hire
+								<input value="2016-01-01" id="hiredate" type="text"
+									class="validate" name="hiredate"> <label for="hiredate">Hire
 									Date</label>
 							</div>
 
 
 							<div class="input-field col s3">
-								<input placeholder="50000" id="password" type="text"
-									class="validate" name="salary"> <label for="password">Salary</label>
+								<input value="50000" id="salary" type="text"
+									class="validate" name="salary"> <label for="salary">Salary</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s3">
-								<input placeholder="10" id="first_name" type="text"
+								<input value="10" id="commission_pct" type="text"
 									class="validate" name="commission_pct"> <label
-									for="first_name">Commission % </label>
+									for="commission_pct">Commission % </label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="4" id="last_name" type="text"
+								<input value="4" id="department_id" type="text"
 									class="validate" name="department_id"> <label
-									for="last_name">Department ID</label>
+									for="department_id">Department ID</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="Placeholder" id="first_name" type="text"
-									class="5" name="job_id"> <label for="disabled">Job
-									ID Date</label>
+								<input value="5" id="job_id" type="text" class="5"
+									name="job_id"> <label for="job_id">Job ID </label>
 							</div>
 
 
 							<div class="input-field col s3">
-								<input placeholder="10 Broadway" id="password" type="text"
-									class="validate" name="address"> <label for="password">Address</label>
+								<input value="10 Broadway" id="address" type="text"
+									class="validate" name="address"> <label for="address">Address</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s3">
-								<input placeholder="New York" id="first_name" type="text"
-									class="validate" name="cityy"> <label for="first_name">City
+								<input value="New York" id="city" type="text"
+									class="validate" name="city"> <label for="city">City
 								</label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="NY" id="last_name" type="text"
-									class="validate" name="state"> <label for="last_name">State
-								</label>
+								<input value="NY" id="state" type="text" class="validate"
+									name="state"> <label for="state">State </label>
 							</div>
 
 							<div class="input-field col s3">
-								<input placeholder="10001" id="first_name" type="text"
-									class="validate" name="zipcode"> <label for="disabled">Zip
+								<input value="10001" id="zipcode" type="text"
+									class="validate" name="zipcode"> <label for="zipcode">Zip
 									Code </label>
 							</div>
 
 
 							<div class="input-field col s3">
-								<input placeholder="1" id="password" type="text"
-									class="validate" name="version"> <label for="password">Version</label>
+								<input value="1" id="version" type="text" class="validate"
+									name="version"> <label for="version">Version</label>
 							</div>
 						</div>
 

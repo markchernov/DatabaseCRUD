@@ -7,13 +7,12 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class DatabaseDAO {
-
-	
 
 	public Connection createConnection() throws SQLException, ClassNotFoundException {
 
@@ -27,8 +26,6 @@ public class DatabaseDAO {
 
 		return conn;
 	}
-
-	
 
 	// create and return list from select statement
 
@@ -130,10 +127,8 @@ public class DatabaseDAO {
 	}
 
 	// receive parameters, call a constructor and save an object to database
-	
-	
-	
-	public String sqlInsertObject(String input) throws SQLException, ClassNotFoundException {
+
+	public String sqlInsertObject(Employee emp) throws SQLException, ClassNotFoundException {
 
 		Connection conn = createConnection();
 
@@ -141,9 +136,30 @@ public class DatabaseDAO {
 		
 		
 		
+		String firstname = emp.getFirstname();
+		String middlename = emp.getMiddlename();
+		String lastname = emp.getFirstname();
+		String gender = emp.getFirstname();
+		String email = emp.getFirstname();
+		int extension = emp.getExtension();
+		Date hiredate = emp.getHiredate();
+		int salary = emp.getSalary();
+		int commission_pct = emp.getCommission_pct();
+		int department_id = emp.getDepartment_id();
+		int job_id = emp.getJob_id();
+		String address = emp.getAddress();
+		String city = emp.getCity();
+		String state = emp.getState();
+		int zipcode = emp.getZipcode();
+		int version = emp.getVersion();
+		
+		String sqlTxt = "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"+ " "
+		
+		+ "VALUES (" + "'"+ firstname + "','" + middlename +  "','" +  lastname + "','" + gender + "','" +  email +  "'," +  extension +  "," +  hiredate + "," + salary + "," +  commission_pct + "," +
+		department_id + "," + job_id + ",'" + address + "','" + city   + "','" + state + "'," + zipcode +"," + version + ");";
 		
 
-		stmt.executeUpdate(input);
+		stmt.executeUpdate(sqlTxt);
 
 		stmt.close();
 
@@ -152,18 +168,5 @@ public class DatabaseDAO {
 		return "Add Complete";
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
