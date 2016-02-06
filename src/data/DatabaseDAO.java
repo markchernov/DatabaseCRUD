@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class DatabaseDAO {
 
 	public Connection createConnection() throws SQLException, ClassNotFoundException {
@@ -39,50 +38,11 @@ public class DatabaseDAO {
 
 		ResultSetMetaData rsmd = rs.getMetaData();
 
-		// get number of columns
-		int cols = rsmd.getColumnCount();
-
-		List<ArrayList<Object>> myList = new ArrayList<ArrayList<Object>>();
-
-		ArrayList<Object> columnList = new ArrayList<Object>();
-
-		for (int i = 1; i <= cols; i++) {
-
-			columnList.add(rsmd.getColumnName(i).toUpperCase());
-
-		}
-
-		myList.add(columnList);
-
-		System.out.println(myList);
-
-		// loop thru each row for number of columns
-
-		while (rs.next()) {
-
-			ArrayList<Object> tempList = new ArrayList<Object>();
-
-			for (int i = 1; i <= cols; i++) {
-
-				tempList.add(rs.getObject(i)); // add columns as strings to
-												// array
-
-			}
-
-			myList.add(tempList); // add array of strings to master array
-
-		}
-
-		// System.out.println(myList.size());
-
-		rs.close();
-
-		stmt.close();
-
-		conn.close();
-
-		return myList;
-
+		
+		
+	return sqlReturnList(rsmd,rs);
+		
+		
 	}
 
 	// execute insert statement
@@ -99,7 +59,7 @@ public class DatabaseDAO {
 
 		conn.close();
 
-		return "Update Complete";
+		return "  Update was completed";
 
 	}
 
@@ -159,24 +119,26 @@ public class DatabaseDAO {
 		stmt.setString(3, lastname);
 		stmt.setString(4, gender);
 		stmt.setString(5, email);
-		
-		
+
 		stmt.setInt(6, extension);
 		stmt.setDate(7, new java.sql.Date(hiredate.getTime()));
 		stmt.setInt(8, salary);
 		stmt.setInt(9, commission_pct);
 		stmt.setInt(10, department_id);
 		stmt.setInt(11, job_id);
-		
+
 		stmt.setString(12, address);
 		stmt.setString(13, city);
 		stmt.setString(14, state);
 		stmt.setString(15, zipcode);
-		
+
 		stmt.setInt(16, version);
-		
-		/*String sqlTxt = "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"
-				+ " "*/
+
+		/*
+		 * String sqlTxt =
+		 * "INSERT INTO employees(firstname, middlename,lastname, gender, email,extension,hiredate,salary,commission_pct, department_id, job_id,address,city,state,zipcode,version)"
+		 * + " "
+		 */
 
 		/*
 		 * + "VALUES (" + "'"+ firstname + "','" + middlename + "','" + lastname
@@ -192,8 +154,120 @@ public class DatabaseDAO {
 
 		conn.close();
 
-		return "Add Complete";
+		return "   Employee was created";
 
 	}
 
+	// get data by id and return an object of employee
+
+	public Employee sqlReturnObject(String input) throws SQLException, ClassNotFoundException {
+
+		Connection conn = createConnection();
+		
+		String sqlTxt = "SELECT * FROM employees WHERE employees.id = ?";
+
+		PreparedStatement stmt = conn.prepareStatement(sqlTxt);
+		
+		
+		int inputInt = Integer.parseInt(input);
+
+	    stmt.setInt(1, inputInt);
+
+		ResultSet rs = stmt.executeQuery();
+		
+		Employee emp = new Employee();
+		
+		if (rs.next()) {
+		
+		
+		
+		System.out.println(emp);
+		System.out.println(rs.toString());
+
+		emp.setFirstname(rs.getString(2));
+		emp.setMiddlename(rs.getString(3));
+		emp.setLastname(rs.getString(4));
+		emp.setGender(rs.getString(5));
+		emp.setEmail(rs.getString(6));
+
+		emp.setExtension(rs.getInt(7));
+
+		emp.setHiredate(rs.getDate(8));
+
+		emp.setSalary(rs.getInt(9));
+		emp.setCommission_pct(rs.getInt(10));
+		emp.setDepartment_id(rs.getInt(11));
+		emp.setJob_id(rs.getInt(12));
+
+		emp.setAddress(rs.getString(13));
+		emp.setCity(rs.getString(14));
+		emp.setState(rs.getString(15));
+		emp.setZipcode(rs.getString(16));
+
+		emp.setVersion(rs.getInt(17));
+		
+		}
+		
+
+		rs.close();
+
+		stmt.close();
+
+		conn.close();
+
+		return emp;
+		
+		
+		
+
+	}
+
+	
+	
+	// method send back array list to loop thru in jsp
+	
+	public List<ArrayList<Object>> sqlReturnList(ResultSetMetaData rsmd, ResultSet rs) throws SQLException, ClassNotFoundException {
+
+	// get number of columns
+	int cols = rsmd.getColumnCount();
+
+	List<ArrayList<Object>> myList = new ArrayList<ArrayList<Object>>();
+
+	ArrayList<Object> columnList = new ArrayList<Object>();
+
+	for (int i = 1; i <= cols; i++) {
+
+		columnList.add(rsmd.getColumnName(i).toUpperCase());
+
+	}
+
+	myList.add(columnList);
+
+	System.out.println(myList);
+
+	// loop thru each row for number of columns
+
+	while (rs.next()) {
+
+		ArrayList<Object> tempList = new ArrayList<Object>();
+
+		for (int i = 1; i <= cols; i++) {
+
+			tempList.add(rs.getObject(i)); // add columns as strings to
+											// array
+
+		}
+
+		myList.add(tempList); // add array of strings to master array
+
+	}
+	
+	
+	return myList;
+	
+	}
+	
+	
+	
+	
 }

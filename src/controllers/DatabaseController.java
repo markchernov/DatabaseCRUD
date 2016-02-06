@@ -137,7 +137,7 @@ public class DatabaseController {
 
 		 Date date = format.parse(hiredate);
 		
-		 int ext =  Integer.parseInt(extension);
+		 int ext = Integer.parseInt(extension);
 		 int sal = Integer.parseInt(salary);
 		 int pct = Integer.parseInt(commission_pct);
 		 int dep = Integer.parseInt(department_id);
@@ -145,9 +145,6 @@ public class DatabaseController {
 		
 		 int ver = Integer.parseInt(version);
 		 
-		 
-		
-		/*Employee emp = new Employee();*/
 
 		Employee emp = new Employee(firstname, middlename, lastname, gender, email, ext, date, sal,
 				pct, dep, job, address, city, state, zipcode, ver);
@@ -168,4 +165,22 @@ public class DatabaseController {
 
 	}
 
+	// select and return employee by id
+
+		@RequestMapping(path = "GetEmployeeObject.do", params = "input", method = RequestMethod.GET)
+
+		public ModelAndView selectEmployeeByID(@RequestParam("input") String userInput) throws ClassNotFoundException, SQLException {
+
+			ModelAndView mv = new ModelAndView();
+			
+			mv.setViewName("index.jsp");
+
+			mv.addObject("updateResult", databaseDao.sqlReturnObject(userInput));
+
+			return mv;
+
+		}
+	
+	
+		
 }

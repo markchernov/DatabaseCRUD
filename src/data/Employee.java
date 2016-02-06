@@ -1,5 +1,6 @@
 package data;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Employee {
@@ -25,9 +26,11 @@ public class Employee {
 	
 	
 	
+	    static Date date = Calendar.getInstance().getTime();
+	
 	    public Employee(){
 	    	
-	    	
+	    this(" "," " ," "," "," ", 0, date , 0, 0, 0, 0, " " , " ", " " , " " , 0 );	
 	    	
 	    }
 	

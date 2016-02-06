@@ -162,6 +162,41 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 
 
 					</div>
+					
+					
+					<div class="card-action">
+
+						<form action="GetEmployeeObject.do" method="GET" class="myForm">
+
+							<div class="row">
+
+								<div class="input-field col s12">
+									<input value="1005" id="select" type="text" class="validate"
+										name="input"> <label class="active" for="first_name2">Please
+										type Employee ID:</label>
+								</div>
+							</div>
+
+
+
+							<button class="btn waves-effect waves-light deep-purple"
+								type="submit">
+								FIND BY ID <i class="material-icons right">launch</i>
+							</button>
+
+
+						</form>
+
+
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -334,7 +369,7 @@ VALUES ('John', 'B' , 'Good','M', 'bgood@gmail.com', 4, 5);"
 		<div class="col s12 m12">
 			<div class="card blue-grey darken-1">
 				<div class="card-content white-text">
-					<span class="card-title">Results</span>
+					<span class="card-title">Results  ${updateResult}     </span>
 
 
 					<table>
